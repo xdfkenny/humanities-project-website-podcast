@@ -54,23 +54,34 @@ nav a:hover {
 /* Sección Hero */
 .hero {
     position: relative;
-    max-height: 500px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 8px;
     overflow: hidden;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-image {
     width: 100%;
-    height: auto;
+    height: 300px;
     object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0;
 }
 
 .hero-description {
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     background: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 1.5rem;
-    width: 100%;
+    margin: 0;
+    backdrop-filter: blur(4px);
 }
 
 /* Secciones principales */
@@ -99,9 +110,10 @@ h2 {
     margin: 2rem 0;
 }
 
-audio {
+.podcast-player audio {
     width: 100%;
     margin-top: 1rem;
+    border-radius: 4px;
 }
 
 /* Lista de referencias */
@@ -130,6 +142,14 @@ footer {
     nav ul {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .hero {
+        margin-bottom: 1rem;
+    }
+
+    .hero-image {
+        height: 200px;
     }
 
     .hero-description {
@@ -191,4 +211,118 @@ main > section.active {
 .nav-button:hover::after,
 .nav-button.active::after {
     width: 100%;
+}
+
+/* Transcript styles */
+.transcript {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.transcript-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1.5rem;
+    line-height: 1.8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.transcript-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.transcript-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure proper paths for any background images */
+.hero::before {
+    background-image: url('../assets/images/hero-image.jpg');
+}
+
+/* Language selector styles */
+.top-bar {
+    background: var(--primary-color);
+    padding: 0.5rem 2rem;
+    text-align: right;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 120px;
+    display: inline-block;
+}
+
+.dropdown-button {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.dropdown-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-button:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.dropdown-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+    fill: none;
+    stroke: currentColor;
+}
+
+.dropdown-icon.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-list {
+    position: absolute;
+    width: 100%;
+    margin-top: 8px;
+    background-color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-height: 192px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 1000;
+}
+
+.dropdown-list.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
