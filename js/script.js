@@ -3,48 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('main > section');
     const navButtons = document.querySelectorAll('.nav-button');
 
-    // Function to load transcript
-    const loadTranscript = async () => {
-        try {
-            const transcriptDiv = document.querySelector('.transcript');
-            const response = await fetch('/docs/transcript/episode1.txt');
-            const text = await response.text();
-            
-            // Split text into paragraphs and wrap each in <p> tags
-            const paragraphs = text.split(/\n\s*\n/); // Split on empty lines
-            const formattedText = paragraphs
-                .filter(p => p.trim()) // Remove empty paragraphs
-                .map(p => `<p>${p.trim()}</p>`) // Wrap in <p> tags
-                .join('');
-
-            transcriptDiv.innerHTML = `
-                <h3>Transcripción</h3>
-                <div class="transcript-content">${formattedText}</div>
-            `;
-        } catch (error) {
-            console.error('Error loading transcript:', error);
-        }
-    };
-
     // Function to update active section
     const updateActiveSection = () => {
-        // Get current hash or default to #inicio
         const hash = window.location.hash || '#inicio';
         
-        // Remove active class from all sections and nav buttons
         sections.forEach(section => section.classList.remove('active'));
         navButtons.forEach(button => button.classList.remove('active'));
         
-        // Add active class to current section and nav button
         const currentSection = document.querySelector(hash);
         const currentButton = document.querySelector(`[href="${hash}"]`);
         
         if (currentSection) {
             currentSection.classList.add('active');
-            // Load transcript if we're on the podcast section
-            if (hash === '#podcast') {
-                loadTranscript();
-            }
         }
         if (currentButton) {
             currentButton.classList.add('active');
