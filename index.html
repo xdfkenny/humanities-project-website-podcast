@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Soundscape of Slavery: Voices of Resilience and Resistance</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header>
+        <div class="top-bar">
+            <div class="dropdown-container">
+                <button class="dropdown-button" onclick="toggleLanguageDropdown()">
+                    English
+                    <svg class="dropdown-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="dropdown-list" id="languageDropdown">
+                    <div class="dropdown-item" data-lang="en">English</div>
+                    <div class="dropdown-item" data-lang="es">Español</div>
+                    <div class="dropdown-item" data-lang="zh">中文</div>
+                </div>
+            </div>
+        </div>
         <h1>The Soundscape of Slavery: Voices of Resilience and Resistance</h1>
         <nav>
             <ul>
@@ -25,14 +40,14 @@
         <!-- Sección de Inicio -->
         <section id="inicio">
             <div class="hero">
-                <img src="assets/hero-image.jpg" alt="Escena representativa de '12 Years a Slave'" class="hero-image">
+                <img src="assets/images/hero-image.jpg" alt="Escena representativa de '12 Years a Slave'" class="hero-image">
                 <p class="hero-description">Este proyecto explora el sonido en la vida de las personas esclavizadas en América.</p>
             </div>
 
             <div class="podcast-player">
                 <h2>Escucha Nuestro Podcast</h2>
                 <audio controls>
-                    <source src="path/to/podcast-episode.mp3" type="audio/mpeg">
+                    <source src="assets/audio/podcast-episode.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
@@ -88,7 +103,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 The Soundscape of Slavery Project. Todos los derechos reservados.</p>
+        <p>&copy; 2025 The Soundscape of Slavery Project. All rights reserved by Kenny Zhang and Leonardo Merlini.</p>
     </footer>
 </body>
 </html>
