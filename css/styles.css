@@ -26,6 +26,7 @@ header {
     color: white;
     padding: 2rem 0;
     text-align: center;
+    position: relative;
 }
 
 header h1 {
@@ -114,6 +115,24 @@ h2 {
     width: 100%;
     margin-top: 1rem;
     border-radius: 4px;
+    background-color: var(--primary-color);
+    height: 40px;
+}
+
+/* Style audio controls for better visibility */
+.podcast-player audio::-webkit-media-controls-panel {
+    background-color: var(--primary-color);
+}
+
+.podcast-player audio::-webkit-media-controls-current-time-display,
+.podcast-player audio::-webkit-media-controls-time-remaining-display {
+    color: white;
+}
+
+.podcast-player audio::-webkit-media-controls-play-button,
+.podcast-player audio::-webkit-media-controls-mute-button {
+    background-color: white;
+    border-radius: 50%;
 }
 
 /* Lista de referencias */
@@ -250,6 +269,11 @@ main > section.active {
     background: var(--primary-color);
     padding: 0.5rem 2rem;
     text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    z-index: 10;
 }
 
 .dropdown-container {
