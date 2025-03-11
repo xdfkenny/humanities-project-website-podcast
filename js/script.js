@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadTranscript = async () => {
         try {
             const transcriptDiv = document.querySelector('.transcript');
-            const response = await fetch('../docs/transcript/episode1.txt');
+            const response = await fetch('/docs/transcript/episode1.txt');
             const text = await response.text();
             
             // Split text into paragraphs and wrap each in <p> tags
