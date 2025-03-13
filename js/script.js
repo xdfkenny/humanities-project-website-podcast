@@ -1,200 +1,136 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Get all sections and nav buttons
-    const sections = document.querySelectorAll('main > section');
-    const navButtons = document.querySelectorAll('.nav-button');
-
-    // Function to update active section
-    const updateActiveSection = () => {
-        const hash = window.location.hash || '#inicio';
+    // Función para manejar la navegación
+    const handleNavigation = () => {
+        const hash = window.location.hash || '#home';
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
         
         sections.forEach(section => section.classList.remove('active'));
-        navButtons.forEach(button => button.classList.remove('active'));
+        navLinks.forEach(link => link.classList.remove('active'));
         
-        const currentSection = document.querySelector(hash);
-        const currentButton = document.querySelector(`[href="${hash}"]`);
-        
-        if (currentSection) {
-            currentSection.classList.add('active');
-        }
-        if (currentButton) {
-            currentButton.classList.add('active');
-        }
+        document.querySelector(hash)?.classList.add('active');
+        document.querySelector(`[href="${hash}"]`)?.classList.add('active');
     };
 
-    // Listen for hash changes
-    window.addEventListener('hashchange', updateActiveSection);
-    
-    // Initial load
-    updateActiveSection();
+    // Event listeners
+    window.addEventListener('hashchange', handleNavigation);
+    handleNavigation(); // Inicializar estado
 
-    // Language translations
+    // Traducciones actualizadas
     const translations = {
         en: {
-            title: "The Soundscape of Slavery: Voices of Resilience and Resistance",
+            title: "Voices of Resistance",
+            subtitle: "A podcast about 12 Years a Slave",
+            episodeNumber: "EP. 01",
+            episodeTitle: "Soundscapes of Suffering and Survival",
             nav: {
                 home: "Home",
-                podcast: "Podcast",
-                context: "Historical Context",
+                episodes: "Episodes",
+                context: "Documentation",
                 reflection: "Reflection",
-                credits: "Credits"
+                documents: "Documentation"
             },
-            hero: {
-                description: "This project explores the transformative power of sound in the lives of enslaved people in America, focusing on spiritual music and work songs."
+            navButtons: ["Home", "Episodes", "Context", "Reflection", "Documentation"],
+            player: {
+                unsupported: "Your browser does not support the audio element."
             },
-            podcast: {
-                title: "Soundscapes of Suffering and Survival",
-                about: "In this episode, we explore how spirituals and work songs were an integral part of enslaved people's lives.",
-                listen: "Listen to Our Podcast",
-                transcript: "Transcript"
-            },
-            context: {
-                title: "Historical Context",
-                subtitle: "The Power of Sound in Slavery",
-                description: "Sound was a fundamental element in the lives of enslaved people, allowing them to express emotions, tell stories, and often communicate in secret."
-            },
-            reflection: {
-                title: "Personal Reflection",
-                content: "This project has allowed me to understand how the power of music transcended the physical and psychological suffering imposed by slavery."
-            },
-            credits: {
-                title: "Credits and Sources"
-            },
-            footer: {
-                rights: "© 2025 The Soundscape of Slavery Project. All rights reserved by Kenny Zhang and Leonardo Merlini."
+            footer: "© 2025 Voices of Resistance",
+            documents: {
+                title: "Documentation",
+                buttonText: "View Research Document",
+                description: "View our complete research documentation"
             }
         },
         es: {
-            title: "El Paisaje Sonoro de la Esclavitud: Voces de Resiliencia y Resistencia",
+            title: "Voces de Resistencia",
+            subtitle: "Un podcast sobre 12 Years a Slave",
+            episodeNumber: "EP. 01",
+            episodeTitle: "Paisajes Sonoros del Sufrimiento y la Supervivencia",
             nav: {
                 home: "Inicio",
-                podcast: "Podcast",
-                context: "Contexto Histórico",
+                episodes: "Episodios",
+                context: "Documentación",
                 reflection: "Reflexión",
-                credits: "Créditos"
+                documents: "Documentación"
             },
-            hero: {
-                description: "Este proyecto explora el poder transformador del sonido en la vida de las personas esclavizadas en América, centrándose en la música espiritual y los cantos de trabajo."
+            navButtons: ["Inicio", "Episodios", "Contexto", "Reflexión", "Documentación"],
+            player: {
+                unsupported: "Tu navegador no soporta el elemento de audio."
             },
-            podcast: {
-                title: "Paisajes Sonoros del Sufrimiento y la Supervivencia",
-                about: "En este episodio, exploramos cómo los espirituales y los cantos de trabajo formaban parte integral de la vida de las personas esclavizadas.",
-                listen: "Escucha Nuestro Podcast",
-                transcript: "Transcripción"
-            },
-            context: {
-                title: "Contexto Histórico",
-                subtitle: "El Poder del Sonido en la Esclavitud",
-                description: "El sonido fue un elemento fundamental en la vida de los esclavizados, ya que les permitió expresar emociones, contar historias y, a menudo, comunicarse en secreto."
-            },
-            reflection: {
-                title: "Reflexión Personal",
-                content: "Este proyecto me ha permitido comprender cómo el poder de la música trascendió el sufrimiento físico y psicológico impuesto por la esclavitud."
-            },
-            credits: {
-                title: "Créditos y Fuentes"
-            },
-            footer: {
-                rights: "© 2025 El Proyecto del Paisaje Sonoro de la Esclavitud. Todos los derechos reservados por Kenny Zhang y Leonardo Merlini."
+            footer: "© 2025 Voces de Resistencia",
+            documents: {
+                title: "Documentación",
+                buttonText: "Ver Documento de Investigación",
+                description: "Ver nuestra documentación completa de investigación"
             }
         },
         zh: {
-            title: "奴隶制的声景：韧性与抵抗的声音",
+            title: "抵抗之声",
+            subtitle: "关于《为奴十二年》的播客",
+            episodeNumber: "第一集",
+            episodeTitle: "苦难与生存的声景",
             nav: {
                 home: "首页",
-                podcast: "播客",
-                context: "历史背景",
-                reflection: "反思",
-                credits: "致谢"
+                episodes: "剧集",
+                context: "文档",
+                reflection: "思考",
+                documents: "文档"
             },
-            hero: {
-                description: "本项目探讨声音在美洲被奴役者生活中的变革力量，聚焦于精神音乐和劳动歌曲。"
+            navButtons: ["首页", "剧集", "背景", "思考", "文档"],
+            player: {
+                unsupported: "您的浏览器不支持音频元素。"
             },
-            podcast: {
-                title: "苦难与生存的声景",
-                about: "在本期节目中，我们探讨精神歌曲和劳动歌曲如何成为被奴役者生活中不可分割的一部分。",
-                listen: "收听我们的播客",
-                transcript: "文字记录"
-            },
-            context: {
-                title: "历史背景",
-                subtitle: "奴隶制中的声音力量",
-                description: "声音是被奴役者生活中的基本要素，使他们能够表达情感，讲述故事，并经常进行秘密交流。"
-            },
-            reflection: {
-                title: "个人反思",
-                content: "这个项目让我理解了音乐的力量如何超越奴隶制带来的身心苦难。"
-            },
-            credits: {
-                title: "致谢与来源"
-            },
-            footer: {
-                rights: "© 2025 奴隶制声景项目。Kenny Zhang 和 Leonardo Merlini 保留所有权利。"
+            footer: "© 2025 抵抗之声",
+            documents: {
+                title: "研究文档",
+                buttonText: "查看研究文档",
+                description: "查看我们的完整研究文档"
             }
         }
     };
 
-    // Function to update page content
+    // Función para actualizar el contenido
     const updatePageContent = (lang) => {
         const t = translations[lang];
         
-        // Update title
+        // Actualizar contenido
         document.querySelector('h1').textContent = t.title;
-        document.title = t.title;
-
-        // Update navigation
-        document.querySelector('[href="#inicio"]').textContent = t.nav.home;
-        document.querySelector('[href="#podcast"]').textContent = t.nav.podcast;
-        document.querySelector('[href="#contexto"]').textContent = t.nav.context;
-        document.querySelector('[href="#reflexion"]').textContent = t.nav.reflection;
-        document.querySelector('[href="#creditos"]').textContent = t.nav.credits;
-
-        // Update hero section
-        document.querySelector('.hero-description').textContent = t.hero.description;
-
-        // Update podcast section
-        document.querySelector('#podcast h2').textContent = t.podcast.title;
-        document.querySelector('.episode-content > h3').textContent = t.podcast.about;
-        document.querySelector('.podcast-player h2').textContent = t.podcast.listen;
-
-        // Update context section
-        document.querySelector('#contexto h2').textContent = t.context.title;
-        document.querySelector('#contexto h3').textContent = t.context.subtitle;
-        document.querySelector('#contexto > article > p').textContent = t.context.description;
-
-        // Update reflection section
-        document.querySelector('#reflexion h2').textContent = t.reflection.title;
-        document.querySelector('#reflexion p').textContent = t.reflection.content;
-
-        // Update credits section
-        document.querySelector('#creditos h2').textContent = t.credits.title;
-
-        // Update footer
-        document.querySelector('footer p').textContent = t.footer.rights;
-
-        // Update HTML lang attribute
+        document.querySelector('.subtitle').textContent = t.subtitle;
+        document.querySelector('.episode-number').textContent = t.episodeNumber;
+        document.querySelector('.episode-info h2').textContent = t.episodeTitle;
+        
+        // Actualizar navegación
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks[0].textContent = t.nav.home;
+        navLinks[1].textContent = t.nav.episodes;
+        navLinks[2].textContent = t.nav.context;
+        navLinks[3].textContent = t.nav.reflection;
+        navLinks[4].textContent = t.nav.documents;
+        
+        // Actualizar botones de navegación
+        navLinks.forEach((link, index) => {
+            link.textContent = t.navButtons[index];
+        });
+        
+        // Actualizar reproductor
+        document.querySelector('.custom-player').setAttribute('title', t.player.unsupported);
+        
+        // Actualizar pie de página
+        document.querySelector('.site-footer p').textContent = t.footer;
+        
+        // Actualizar textos de documentación
+        if (document.querySelector('#documents')) {
+            document.querySelector('#documents h2').textContent = t.documents.title;
+            document.querySelector('.document-button h3').textContent = t.documents.buttonText;
+            document.querySelector('.document-button p').textContent = t.documents.description;
+        }
+        
+        // Actualizar atributo lang del HTML
         document.documentElement.lang = lang;
     };
 
-    // Language dropdown functionality
-    function toggleLanguageDropdown() {
-        const dropdownList = document.getElementById('languageDropdown');
-        const dropdownIcon = document.querySelector('.dropdown-icon');
-        dropdownList.classList.toggle('open');
-        dropdownIcon.classList.toggle('open');
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        const dropdown = document.querySelector('.dropdown-container');
-        if (!dropdown.contains(e.target)) {
-            document.getElementById('languageDropdown').classList.remove('open');
-            document.querySelector('.dropdown-icon').classList.remove('open');
-        }
-    });
-
-    // Handle language selection
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
-    dropdownItems.forEach(item => {
+    // Event listeners para el selector de idioma
+    document.querySelectorAll('.dropdown-item').forEach(item => {
         item.addEventListener('click', () => {
             const lang = item.dataset.lang;
             updatePageContent(lang);
@@ -203,16 +139,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Set initial language to English
+    // Inicializar en inglés
     updatePageContent('en');
-    document.querySelector('.dropdown-button').textContent = 'English';
-    document.documentElement.lang = 'en';
 });
 
-// Add this function to global scope for the onclick handler
+// Función para toggle del dropdown
 function toggleLanguageDropdown() {
-    const dropdownList = document.getElementById('languageDropdown');
-    const dropdownIcon = document.querySelector('.dropdown-icon');
-    dropdownList.classList.toggle('open');
-    dropdownIcon.classList.toggle('open');
-} 
+    const dropdown = document.getElementById('languageDropdown');
+    const icon = document.querySelector('.dropdown-icon');
+    dropdown.classList.toggle('open');
+    icon.classList.toggle('open');
+}
+
+// Cerrar dropdown al hacer clic fuera
+document.addEventListener('click', (e) => {
+    const container = document.querySelector('.dropdown-container');
+    if (!container.contains(e.target)) {
+        document.getElementById('languageDropdown').classList.remove('open');
+        document.querySelector('.dropdown-icon').classList.remove('open');
+    }
+});
