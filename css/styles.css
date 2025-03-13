@@ -1,10 +1,11 @@
 /* Estilos generales */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #8b4513;
-    --text-color: #333;
-    --background-color: #f5f5f5;
-    --accent-color: #d35400;
+    --color-background: #F5F5F5;
+    --color-primary: #9E7D7A;
+    --color-secondary: #6B4F4F;
+    --color-text: #2C1810;
+    --color-accent: #D4B5B0;
+    --font-primary: 'Inter', sans-serif;
 }
 
 * {
@@ -14,15 +15,17 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
 }
 
 /* Encabezado y navegación */
 header {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -49,7 +52,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    color: var(--color-accent);
 }
 
 /* Sección Hero */
@@ -97,7 +100,7 @@ section {
 }
 
 h2 {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
     margin-bottom: 1.5rem;
     font-size: 2rem;
 }
@@ -115,13 +118,13 @@ h2 {
     width: 100%;
     margin-top: 1rem;
     border-radius: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     height: 40px;
 }
 
 /* Style audio controls for better visibility */
 .podcast-player audio::-webkit-media-controls-panel {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
 }
 
 .podcast-player audio::-webkit-media-controls-current-time-display,
@@ -143,13 +146,13 @@ h2 {
 
 .references li {
     margin-bottom: 1rem;
-    border-left: 3px solid var(--accent-color);
+    border-left: 3px solid var(--color-accent);
     padding-left: 1rem;
 }
 
 /* Pie de página */
 footer {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     color: white;
     text-align: center;
     padding: 1.5rem;
@@ -173,28 +176,41 @@ footer {
 
     .hero-description {
         position: relative;
-        background: var(--primary-color);
+        background: var(--color-primary);
     }
 }
 
-/* Hide sections by default */
+/* Reemplazar las reglas de ocultación y animación de secciones */
 main > section {
-    display: none;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease-in-out;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-/* Show active section */
+/* Modificar la animación fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        display: block; /* Asegurar que permanezca visible */
+    }
+}
+
+/* Actualizar el estilo para secciones activas */
 main > section.active {
     display: block;
     opacity: 1;
+    visibility: visible;
 }
 
 /* Active navigation state */
 .nav-button.active {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 3px;
 }
 
@@ -223,7 +239,7 @@ main > section.active {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
+    background-color: var(--color-accent);
     transition: width 0.3s ease;
 }
 
@@ -266,7 +282,7 @@ main > section.active {
 
 /* Language selector styles */
 .top-bar {
-    background: var(--primary-color);
+    background: var(--color-primary);
     padding: 0.5rem 2rem;
     text-align: right;
     position: absolute;
@@ -303,7 +319,7 @@ main > section.active {
 
 .dropdown-button:focus {
     outline: none;
-    border-color: var(--accent-color);
+    border-color: var(--color-accent);
 }
 
 .dropdown-icon {
@@ -322,7 +338,7 @@ main > section.active {
     position: absolute;
     width: 100%;
     margin-top: 8px;
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -349,4 +365,238 @@ main > section.active {
 
 .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* New styles */
+.site-header {
+    padding: 2rem;
+    text-align: center;
+}
+
+.language-btn {
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.podcast-cover {
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.player-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.episode-info {
+    margin-bottom: 1.5rem;
+}
+
+.episode-number {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.custom-player {
+    width: 100%;
+    height: 40px;
+}
+
+.episode-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.site-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        margin: 2rem 0;
+    }
+    
+    .player-container {
+        padding: 1rem;
+    }
+}
+
+/* Secciones y navegación */
+.section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Estilos para la grid de episodios */
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.episode-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para documentos */
+.documents-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.document-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.document-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para el botón de documentación */
+.document-button {
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.document-button h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.document-button p {
+    color: var(--color-text);
+}
+
+/* Navegación fija y espaciado */
+.episode-navigation {
+    position: sticky;
+    top: 0;
+    background: var(--color-background);
+    padding: 1rem 0;
+    margin: 2rem 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-accent);
+}
+
+/* Ajustar espaciado de secciones */
+.section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.section:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* Ajustar espaciado de contenedores */
+.hero-section,
+.episodes-grid,
+.documents-grid {
+    margin: 3rem 0;
+}
+
+.episode-card {
+    margin-bottom: 2rem;
+}
+
+/* Mejorar visibilidad del nav activo */
+.nav-link.active {
+    color: var(--color-primary);
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
 }
