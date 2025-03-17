@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 podcast: "Podcast",
                 context: "Historical Context",
                 reflection: "Reflection",
-                credits: "Credits"
+                credits: "Cites"
             },
             hero: {
                 description: "This project explores the transformative power of sound in the lives of enslaved people in America, focusing on spiritual music and work songs."
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: "This project has allowed me to understand how the power of music transcended the physical and psychological suffering imposed by slavery."
             },
             credits: {
-                title: "Credits and Sources"
+                title: "Cites"
             },
             footer: {
                 rights: "© 2025 The Soundscape of Slavery Project. All rights reserved by Kenny Zhang and Leonardo Merlini."
