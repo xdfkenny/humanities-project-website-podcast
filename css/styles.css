@@ -1,11 +1,10 @@
 /* Estilos generales */
 :root {
-    --color-background: #F5F5F5;
-    --color-primary: #9E7D7A;
-    --color-secondary: #6B4F4F;
-    --color-text: #2C1810;
-    --color-accent: #D4B5B0;
-    --font-primary: 'Inter', sans-serif;
+    --primary-color: #2c4f4e; /* Dark Teal - Color3 */
+    --secondary-color: #8a5635; /* Warm Brown - Color5 */
+    --text-color: #1a1a1a; /* Deep Charcoal - Color4 */
+    --background-color: #f5f1e8; /* Soft Cream - Color1 */
+    --accent-color: #ffffff; /* Muted Sage - Color2 */
 }
 
 * {
@@ -15,17 +14,15 @@
 }
 
 body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-family: var(--font-primary);
+    font-family: 'Georgia', serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 /* Encabezado y navegación */
 header {
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -52,7 +49,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--color-accent);
+    color: var(--accent-color);
 }
 
 /* Sección Hero */
@@ -69,8 +66,8 @@ nav a:hover {
 
 .hero-image {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center;
     display: block;
     margin: 0;
@@ -100,42 +97,25 @@ section {
 }
 
 h2 {
-    color: var(--color-secondary);
+    color: var(--secondary-color);
     margin-bottom: 1.5rem;
     font-size: 2rem;
 }
 
 /* Reproductor de podcast */
 .podcast-player {
-    background: white;
+    background: transparent;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: none;
     margin: 2rem 0;
+    /* Remove YouTube style centering */
 }
 
-.podcast-player audio {
+.podcast-player video {
     width: 100%;
-    margin-top: 1rem;
-    border-radius: 4px;
-    background-color: var(--color-primary);
-    height: 40px;
-}
-
-/* Style audio controls for better visibility */
-.podcast-player audio::-webkit-media-controls-panel {
-    background-color: var(--color-primary);
-}
-
-.podcast-player audio::-webkit-media-controls-current-time-display,
-.podcast-player audio::-webkit-media-controls-time-remaining-display {
-    color: white;
-}
-
-.podcast-player audio::-webkit-media-controls-play-button,
-.podcast-player audio::-webkit-media-controls-mute-button {
-    background-color: white;
-    border-radius: 50%;
+    border-radius: 8px;
+    /* Remove YouTube style max width and box shadow */
 }
 
 /* Lista de referencias */
@@ -146,13 +126,13 @@ h2 {
 
 .references li {
     margin-bottom: 1rem;
-    border-left: 3px solid var(--color-accent);
+    border-left: 3px solid var(--accent-color);
     padding-left: 1rem;
 }
 
 /* Pie de página */
 footer {
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 1.5rem;
@@ -176,41 +156,28 @@ footer {
 
     .hero-description {
         position: relative;
-        background: var(--color-primary);
+        background: var(--primary-color);
     }
 }
 
-/* Reemplazar las reglas de ocultación y animación de secciones */
+/* Hide sections by default */
 main > section {
-    opacity: 1;
+    display: none;
+    opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    animation: fadeIn 0.5s ease-in-out forwards;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Modificar la animación fadeIn */
-@keyframes fadeIn {
-    from {
-        opacity: 0.5;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        display: block; /* Asegurar que permanezca visible */
-    }
-}
-
-/* Actualizar el estilo para secciones activas */
+/* Show active section */
 main > section.active {
     display: block;
     opacity: 1;
-    visibility: visible;
 }
 
 /* Active navigation state */
 .nav-button.active {
-    color: var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 3px;
 }
 
@@ -239,7 +206,7 @@ main > section.active {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--color-accent);
+    background-color: var(--accent-color);
     transition: width 0.3s ease;
 }
 
@@ -271,7 +238,7 @@ main > section.active {
     text-align: justify;
 }
 
-.transcript-content p:last-child {
+transcript-content p:last-child {
     margin-bottom: 0;
 }
 
@@ -282,7 +249,7 @@ main > section.active {
 
 /* Language selector styles */
 .top-bar {
-    background: var(--color-primary);
+    background: var(--primary-color);
     padding: 0.5rem 2rem;
     text-align: right;
     position: absolute;
@@ -302,7 +269,7 @@ main > section.active {
     width: 100%;
     padding: 8px 12px;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid var(--text-color);
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -319,7 +286,7 @@ main > section.active {
 
 .dropdown-button:focus {
     outline: none;
-    border-color: var(--color-accent);
+    border-color: var(--accent-color);
 }
 
 .dropdown-icon {
@@ -338,7 +305,7 @@ main > section.active {
     position: absolute;
     width: 100%;
     margin-top: 8px;
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -364,239 +331,5 @@ main > section.active {
 }
 
 .dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* New styles */
-.site-header {
-    padding: 2rem;
-    text-align: center;
-}
-
-.language-btn {
-    background: transparent;
-    border: 1px solid var(--color-accent);
-    color: var(--color-secondary);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    margin: 4rem 0;
-}
-
-.podcast-cover {
-    max-width: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.cover-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.player-container {
-    width: 100%;
-    max-width: 600px;
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.episode-info {
-    margin-bottom: 1.5rem;
-}
-
-.episode-number {
-    color: var(--color-primary);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.custom-player {
-    width: 100%;
-    height: 40px;
-}
-
-.episode-navigation ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 0;
-}
-
-.nav-link {
-    color: var(--color-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--color-primary);
-}
-
-.site-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--color-secondary);
-    font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        margin: 2rem 0;
-    }
-    
-    .player-container {
-        padding: 1rem;
-    }
-}
-
-/* Secciones y navegación */
-.section {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.section.active {
-    display: block;
-    opacity: 1;
-}
-
-/* Estilos para la grid de episodios */
-.episodes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
-}
-
-.episode-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* Estilos para documentos */
-.documents-grid {
-    display: grid;
-    gap: 2rem;
-    padding: 2rem 0;
-}
-
-.document-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    text-decoration: none;
-    color: var(--color-text);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.document-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.document-card h3 {
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-}
-
-/* Estilos para el botón de documentación */
-.document-button {
-    width: 100%;
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.document-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.document-button h3 {
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-}
-
-.document-button p {
-    color: var(--color-text);
-}
-
-/* Navegación fija y espaciado */
-.episode-navigation {
-    position: sticky;
-    top: 0;
-    background: var(--color-background);
-    padding: 1rem 0;
-    margin: 2rem 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--color-accent);
-}
-
-/* Ajustar espaciado de secciones */
-.section {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.section:first-child {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-}
-
-/* Ajustar espaciado de contenedores */
-.hero-section,
-.episodes-grid,
-.documents-grid {
-    margin: 3rem 0;
-}
-
-.episode-card {
-    margin-bottom: 2rem;
-}
-
-/* Mejorar visibilidad del nav activo */
-.nav-link.active {
-    color: var(--color-primary);
-    position: relative;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-primary);
+    background-color: var(--accent-color);
 }
