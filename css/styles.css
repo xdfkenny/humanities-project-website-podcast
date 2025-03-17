@@ -1,10 +1,11 @@
 /* Estilos generales */
 :root {
-    --primary-color: #2c4f4e; /* Dark Teal - Color3 */
-    --secondary-color: #8a5635; /* Warm Brown - Color5 */
-    --text-color: #1a1a1a; /* Deep Charcoal - Color4 */
-    --background-color: #f5f1e8; /* Soft Cream - Color1 */
-    --accent-color: #ffffff; /* Muted Sage - Color2 */
+    --color-background: #F5F5F5;
+    --color-primary: #9E7D7A;
+    --color-secondary: #6B4F4F;
+    --color-text: #2C1810;
+    --color-accent: #D4B5B0;
+    --font-primary: 'Inter', sans-serif;
 }
 
 * {
@@ -14,15 +15,15 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--color-text);
+    background-color: var(--color-background);
 }
 
 /* Encabezado y navegación */
 header {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     color: white;
     padding: 2rem 0;
     text-align: center;
@@ -49,7 +50,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    color: var(--color-accent);
 }
 
 /* Sección Hero */
@@ -97,7 +98,7 @@ section {
 }
 
 h2 {
-    color: var(--secondary-color);
+    color: var(--color-secondary);
     margin-bottom: 1.5rem;
     font-size: 2rem;
 }
@@ -126,13 +127,13 @@ h2 {
 
 .references li {
     margin-bottom: 1rem;
-    border-left: 3px solid var(--accent-color);
+    border-left: 3px solid var(--color-accent);
     padding-left: 1rem;
 }
 
 /* Pie de página */
 footer {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     color: white;
     text-align: center;
     padding: 1.5rem;
@@ -156,7 +157,7 @@ footer {
 
     .hero-description {
         position: relative;
-        background: var(--primary-color);
+        background: var(--color-primary);
     }
 }
 
@@ -176,8 +177,8 @@ main > section.active {
 
 /* Active navigation state */
 .nav-button.active {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 3px;
 }
 
@@ -206,7 +207,7 @@ main > section.active {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
+    background-color: var(--color-accent);
     transition: width 0.3s ease;
 }
 
@@ -249,7 +250,7 @@ transcript-content p:last-child {
 
 /* Language selector styles */
 .top-bar {
-    background: var(--primary-color);
+    background: var(--color-primary);
     padding: 0.5rem 2rem;
     text-align: right;
     position: absolute;
@@ -269,7 +270,7 @@ transcript-content p:last-child {
     width: 100%;
     padding: 8px 12px;
     background-color: transparent;
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--color-text);
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -286,7 +287,7 @@ transcript-content p:last-child {
 
 .dropdown-button:focus {
     outline: none;
-    border-color: var(--accent-color);
+    border-color: var(--color-accent);
 }
 
 .dropdown-icon {
@@ -305,7 +306,7 @@ transcript-content p:last-child {
     position: absolute;
     width: 100%;
     margin-top: 8px;
-    background-color: var(--primary-color);
+    background-color: var(--color-primary);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -331,5 +332,32 @@ transcript-content p:last-child {
 }
 
 .dropdown-item:hover {
-    background-color: var(--accent-color);
+    background-color: var(--color-accent);
+}
+
+/* Documentation button styles */
+.document-button {
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.document-button h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.document-button p {
+    color: var(--color-text);
 }
